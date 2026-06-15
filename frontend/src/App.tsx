@@ -9,6 +9,10 @@ import { Report } from './pages/Report';
 import { Audit } from './pages/Audit';
 import { Terminal, Shield, RefreshCw } from 'lucide-react';
 
+const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://127.0.0.1:8000' 
+  : 'https://sentinelmind-dfir.onrender.com';
+
 export default function App() {
   const [activePage, setActivePage] = useState<string>('landing');
   const [investigationId, setInvestigationId] = useState<string | null>(null);
@@ -24,7 +28,7 @@ export default function App() {
 
     const interval = setInterval(() => {
       // Fetch Status
-      fetch(`http://127.0.0.1:8000/api/investigation/${investigationId}/status`)
+      fetch(`${API_BASE_URL}/api/investigation/${investigationId}/status`)
         .then(res => res.json())
         .then(data => {
           setStatus(data.status);
@@ -35,13 +39,13 @@ export default function App() {
         .catch(err => console.error("Error fetching status:", err));
 
       // Fetch Logs
-      fetch(`http://127.0.0.1:8000/api/investigation/${investigationId}/logs`)
+      fetch(`${API_BASE_URL}/api/investigation/${investigationId}/logs`)
         .then(res => res.json())
         .then(data => setLogs(data))
         .catch(err => console.error("Error fetching logs:", err));
 
       // Fetch Findings
-      fetch(`http://127.0.0.1:8000/api/investigation/${investigationId}/findings`)
+      fetch(`${API_BASE_URL}/api/investigation/${investigationId}/findings`)
         .then(res => res.json())
         .then(data => setFindings(data))
         .catch(err => console.error("Error fetching findings:", err));
@@ -54,7 +58,7 @@ export default function App() {
     setIsLoading(true);
     setTargetHost(host);
     
-    fetch('http://127.0.0.1:8000/api/investigation/start', {
+    fetch(`${API_BASE_URL}/api/investigation/start`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

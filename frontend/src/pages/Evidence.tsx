@@ -12,6 +12,10 @@ interface EvidenceFile {
   summary: string;
 }
 
+const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://127.0.0.1:8000' 
+  : 'https://sentinelmind-dfir.onrender.com';
+
 export const Evidence: React.FC = () => {
   const [evidenceList, setEvidenceList] = useState<EvidenceFile[]>([]);
   const [selectedFile, setSelectedFile] = useState<EvidenceFile | null>(null);
@@ -20,7 +24,7 @@ export const Evidence: React.FC = () => {
   const [verifiedMap, setVerifiedMap] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/evidence/inventory')
+    fetch(`${API_BASE_URL}/api/evidence/inventory`)
       .then(res => res.json())
       .then(data => {
         setEvidenceList(data);
@@ -38,7 +42,7 @@ export const Evidence: React.FC = () => {
         ? 'auth' 
         : 'registry';
 
-    fetch(`http://127.0.0.1:8000/api/evidence/details/${typeKey}`)
+    fetch(`${API_BASE_URL}/api/evidence/details/${typeKey}`)
       .then(res => res.json())
       .then(data => setRawContent(data));
   }, [selectedFile]);

@@ -5,6 +5,10 @@ interface ReportProps {
   investigationId: string | null;
 }
 
+const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://127.0.0.1:8000' 
+  : 'https://sentinelmind-dfir.onrender.com';
+
 export const Report: React.FC<ReportProps> = ({ investigationId }) => {
   const [report, setReport] = useState<any>(null);
   const [copied, setCopied] = useState(false);
@@ -13,7 +17,7 @@ export const Report: React.FC<ReportProps> = ({ investigationId }) => {
 
   useEffect(() => {
     if (!investigationId) return;
-    fetch(`http://127.0.0.1:8000/api/reports/${investigationId}`)
+    fetch(`${API_BASE_URL}/api/reports/${investigationId}`)
       .then(res => res.json())
       .then(data => setReport(data));
   }, [investigationId]);
