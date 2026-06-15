@@ -1,0 +1,62 @@
+{
+  "integrity_hash": "sha256-8f3e9b2c8a1d7f6e5c4b3a2910827364a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0",
+  "evidence_source": "memdump.raw",
+  "acquired_at": "2026-06-16T00:01:23Z",
+  "processes": [
+    {
+      "pid": 4,
+      "name": "System",
+      "path": "C:\\Windows\\System32\\ntoskrnl.exe",
+      "ppid": 0,
+      "owner": "NT AUTHORITY\\SYSTEM"
+    },
+    {
+      "pid": 688,
+      "name": "services.exe",
+      "path": "C:\\Windows\\System32\\services.exe",
+      "ppid": 492,
+      "owner": "NT AUTHORITY\\SYSTEM"
+    },
+    {
+      "pid": 3204,
+      "name": "svchost.exe",
+      "path": "C:\\Windows\\System32\\svchost.exe",
+      "ppid": 688,
+      "owner": "NT AUTHORITY\\SYSTEM"
+    },
+    {
+      "pid": 4920,
+      "name": "svchost.exe",
+      "path": "C:\\Users\\Public\\Downloads\\svchost.exe",
+      "ppid": 3204,
+      "owner": "NT AUTHORITY\\SYSTEM",
+      "suspicious": true,
+      "notes": "Running from Public folder. PPID points to standard svchost.exe, which is irregular (svchost should be spawned by services.exe)."
+    }
+  ],
+  "network_connections": [
+    {
+      "pid": 4920,
+      "local_address": "192.168.1.145:49811",
+      "remote_address": "185.220.101.44:443",
+      "state": "ESTABLISHED",
+      "protocol": "TCP"
+    },
+    {
+      "pid": 3204,
+      "local_address": "0.0.0.0:135",
+      "remote_address": "0.0.0.0:0",
+      "state": "LISTENING",
+      "protocol": "TCP"
+    }
+  ],
+  "injected_code": [
+    {
+      "pid": 4920,
+      "address": "0x0000021c3fa10000",
+      "size": 4096,
+      "protection": "PAGE_EXECUTE_READWRITE",
+      "yara_rules": ["CobaltStrike_Beacon", "Suspicious_Shellcode"]
+    }
+  ]
+}

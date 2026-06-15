@@ -1,0 +1,28 @@
+{
+  "integrity_hash": "sha256-f6a7b8c9d08f3e9b2c8a1d7f6e5c4b3a2910827364a5b6c7d8e9f0a1b2c3d4e5",
+  "evidence_source": "SYSTEM_registry_hive",
+  "acquired_at": "2026-06-16T00:03:00Z",
+  "registry_entries": [
+    {
+      "key_path": "HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+      "value_name": "WindowsUpdateAgent",
+      "value_data": "C:\\Users\\Public\\Downloads\\svchost.exe --silent",
+      "last_write_time": "2026-06-15T23:35:10Z"
+    },
+    {
+      "key_path": "HKLM\\System\\CurrentControlSet\\Services\\WinSecurityAgent",
+      "value_name": "ImagePath",
+      "value_data": "C:\\Users\\Public\\Downloads\\svchost.exe",
+      "last_write_time": "2026-06-15T23:34:45Z"
+    }
+  ],
+  "scheduled_tasks": [
+    {
+      "task_name": "TelemetrySync",
+      "action_path": "C:\\Users\\Public\\Downloads\\svchost.exe",
+      "trigger": "At startup / Every 1 hour",
+      "creator": "Administrator",
+      "last_run_time": "2026-06-15T23:40:00Z"
+    }
+  ]
+}

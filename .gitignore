@@ -1,0 +1,56 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+backend/app/database/sentinelmind.db
+
+# Environments
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# venv
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+*.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Build outputs
+dist/
+build/
+out/
